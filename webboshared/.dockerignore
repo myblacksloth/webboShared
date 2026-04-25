@@ -1,0 +1,9 @@
+# Ignora i moduli node per non copiarli nell'immagine Docker
+node_modules
+
+# Ignora i dati locali
+data
+
+# Ignora i file di ambiente e di configurazione locale
+.env
+.env.local

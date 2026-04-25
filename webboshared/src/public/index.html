@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebbòShared - Condivisione File e Testo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Intestazione principale dell'applicazione -->
+  <header>
+    <h1>📁 WebbòShared</h1>
+    <p class="sottotitolo">Condivisione file e testo, semplice e veloce</p>
+  </header>
+
+  <main>
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- VISTA ELENCO STANZE: mostra tutte le stanze disponibili           -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <section id="vista-stanze">
+      <!-- Form per creare una nuova stanza -->
+      <div class="card card-crea">
+        <h2>Crea una nuova stanza</h2>
+        <form id="form-crea-stanza">
+          <div class="form-gruppo">
+            <input
+              type="text"
+              id="input-nome-stanza"
+              placeholder="Nome della stanza..."
+              maxlength="100"
+              required
+            />
+            <button type="submit" class="btn btn-primario">Crea stanza</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Elenco delle stanze esistenti -->
+      <div class="card">
+        <h2>Stanze disponibili</h2>
+        <div id="elenco-stanze">
+          <!-- Le stanze vengono inserite dinamicamente via JavaScript -->
+          <p class="messaggio-vuoto">Caricamento in corso...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- VISTA STANZA SINGOLA: mostra il contenuto di una stanza           -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <section id="vista-stanza" class="nascosto">
+      <!-- Pulsante per tornare all'elenco stanze -->
+      <button id="btn-torna-indietro" class="btn btn-secondario">← Torna alle stanze</button>
+
+      <div class="card">
+        <div class="intestazione-stanza">
+          <h2 id="nome-stanza-corrente">Stanza</h2>
+          <button id="btn-elimina-stanza" class="btn btn-pericolo">Elimina stanza</button>
+        </div>
+        <p id="info-stanza-corrente" class="info-stanza"></p>
+      </div>
+
+      <!-- Form per caricare un file nella stanza -->
+      <div class="card">
+        <h2>Carica un file</h2>
+        <form id="form-upload-file">
+          <div class="form-gruppo">
+            <input type="file" id="input-file" required />
+            <button type="submit" class="btn btn-primario">Carica</button>
+          </div>
+        </form>
+        <!-- Barra di progresso per l'upload -->
+        <div id="contenitore-progresso" class="nascosto">
+          <div class="barra-progresso">
+            <div id="barra-progresso-riempimento" class="barra-progresso-riempimento"></div>
+          </div>
+          <span id="testo-progresso">0%</span>
+        </div>
+      </div>
+
+      <!-- Elenco dei file nella stanza -->
+      <div class="card">
+        <h2>File nella stanza</h2>
+        <div id="elenco-file">
+          <p class="messaggio-vuoto">Nessun file caricato.</p>
+        </div>
+      </div>
+
+      <!-- Form per condividere uno snippet di testo -->
+      <div class="card card-snippet">
+        <h2>Condividi testo</h2>
+        <form id="form-crea-snippet">
+          <input
+            type="text"
+            id="input-titolo-snippet"
+            placeholder="Titolo (opzionale)..."
+            maxlength="100"
+            class="input-titolo-snippet"
+          />
+          <textarea
+            id="input-testo-snippet"
+            placeholder="Incolla qui il testo da condividere..."
+            rows="5"
+            required
+          ></textarea>
+          <button type="submit" class="btn btn-primario">Condividi testo</button>
+        </form>
+      </div>
+
+      <!-- Elenco degli snippet di testo nella stanza -->
+      <div class="card">
+        <h2>Snippet di testo</h2>
+        <div id="elenco-snippet">
+          <p class="messaggio-vuoto">Nessuno snippet di testo condiviso.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Messaggio di notifica (toast) -->
+  <div id="toast" class="toast nascosto"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

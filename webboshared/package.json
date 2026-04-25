@@ -1,0 +1,14 @@
+{
+  "name": "webboshared",
+  "version": "1.0.0",
+  "description": "Applicazione web per la condivisione di file tramite stanze",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "multer": "^1.4.5-lts.1",
+    "uuid": "^10.0.0"
+  }
+}
