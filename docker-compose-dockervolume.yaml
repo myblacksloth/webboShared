@@ -1,0 +1,40 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# WebbòShared - Docker Compose
+# Orchestrazione del container per l'applicazione di condivisione file.
+#
+# Avvio:   docker compose -f docker-compose-yaml up -d
+# Arresto: docker compose -f docker-compose-yaml down
+# ═══════════════════════════════════════════════════════════════════════════
+
+services:
+  webboshared:
+    # Costruisce l'immagine dal Dockerfile nella cartella webboshared
+    build:
+      context: ./webboshared
+      dockerfile: Dockerfile
+
+    # Nome del container per facilitarne l'identificazione
+    container_name: webboshared
+
+    # Variabili d'ambiente per configurare porta e percorso dati
+    environment:
+      - PORT=3000
+      - DATA_DIR=/data/webboshared/data
+
+    # Mappa la porta del container sulla porta dell'host
+    ports:
+      - "3000:3000"
+
+    # Volume per la persistenza dei dati su disco dell'host
+    volumes:
+      - webboshared-data:/data/webboshared/data
+
+    # Riavvia automaticamente il container in caso di crash
+    restart: unless-stopped
+
+# Volume con nome per la persistenza dei dati
+volumes:
+  webboshared-data:
+    driver: local
+
+
